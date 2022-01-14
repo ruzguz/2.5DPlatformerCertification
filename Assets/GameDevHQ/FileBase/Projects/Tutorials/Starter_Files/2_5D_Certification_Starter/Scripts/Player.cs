@@ -11,9 +11,10 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float _jumpHeight = 2.0f;
     [SerializeField]
-    private float _gravity = 0.05f;
+    private float _gravity = 0.1f;
     private Vector3 _direction;
     private Vector3 _velocity;
+    private float _yVelocity;
 
     // Component Handlers
     private CharacterController _controller;
@@ -36,8 +37,19 @@ public class Player : MonoBehaviour
         _direction = new Vector3(0, 0, h);
         _velocity = _direction * _speed;
 
-        
+        if (_controller.isGrounded == true) 
+        {
+            if (Input.GetKeyDown(KeyCode.Space)) 
+            {
+                _yVelocity = _jumpHeight;
+            }
+        } else 
+        {
+            _yVelocity -= _gravity;
+        }
 
+
+        _velocity.y = _yVelocity;
         _controller.Move(_velocity);
         
 
