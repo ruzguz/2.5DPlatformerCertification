@@ -7,11 +7,11 @@ public class Player : MonoBehaviour
 
     // Player Variables
     [SerializeField]
-    private float _speed = 0.5f;
+    private float _speed = 8f;
     [SerializeField]
-    private float _jumpHeight = 2.0f;
+    private float _jumpHeight = 20f;
     [SerializeField]
-    private float _gravity = 0.1f;
+    private float _gravity = 0.5f;
     private Vector3 _direction;
     private Vector3 _velocity;
     private float _yVelocity;
@@ -50,7 +50,7 @@ public class Player : MonoBehaviour
 
 
         _velocity.y = _yVelocity;
-        _controller.Move(_velocity);
+        _controller.Move(_velocity * Time.deltaTime);
         
 
     }
