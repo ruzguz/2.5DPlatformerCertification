@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 40404428}
   - component: {fileID: 40404430}
   - component: {fileID: 40404431}
+  - component: {fileID: 40404426}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -142,6 +143,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &40404426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 40404425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5981b35d844b47d5ae5efae71350c80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!33 &40404428
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -176,13 +189,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 1.73
+  m_Height: 1.92
   m_Radius: 0.22
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.8, z: 0}
+  m_Center: {x: 0, y: 0.91, z: 0}
 --- !u!114 &40404431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,7 +205,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 40404425}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8713e6fe7ba474301bdebf6d7c6853c8, type: 3}
+  m_Script: {fileID: 11500000, guid: 2451a27f012684d25b15aa2d280d751c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 20
@@ -356,6 +369,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5edc2773676564b94bcb914b423169cc, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 5edc2773676564b94bcb914b423169cc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -399,6 +416,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 4be319208b29249d0aa9b5d2bc25addf, type: 2}
+    - target: {fileID: 9500000, guid: 5edc2773676564b94bcb914b423169cc, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5edc2773676564b94bcb914b423169cc, type: 3}
 --- !u!4 &2105793262 stripped
