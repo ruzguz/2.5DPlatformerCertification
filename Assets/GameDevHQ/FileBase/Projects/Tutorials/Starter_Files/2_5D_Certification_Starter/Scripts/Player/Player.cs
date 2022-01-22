@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
 
     // Component Handlers
     private CharacterController _controller;
-
+    private Animator _anim;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +27,12 @@ public class Player : MonoBehaviour
         if (_controller == null) 
         {
             Debug.LogError("Character Controller is null");
+        }
+
+        _anim = GetComponentInChildren<Animator>();
+        if (_anim == null) 
+        {
+            Debug.LogError("Animator is null");
         }
     }
 
@@ -39,8 +45,10 @@ public class Player : MonoBehaviour
 
         if (_controller.isGrounded == true) 
         {
+            _anim.SetBool("Jump", false);
             if (Input.GetKeyDown(KeyCode.Space)) 
             {
+                _anim.SetBool("Jump", true);
                 _yVelocity = _jumpHeight;
             }
         } else 
