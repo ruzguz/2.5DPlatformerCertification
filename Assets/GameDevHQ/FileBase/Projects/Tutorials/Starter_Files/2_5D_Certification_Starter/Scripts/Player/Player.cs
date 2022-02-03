@@ -59,7 +59,11 @@ public class Player : MonoBehaviour
 
         _velocity.y = _yVelocity;
         _controller.Move(_velocity * Time.deltaTime);
-        
+    }
 
+    public void GrabLedge()
+    {
+        _anim.SetBool("GrabLedge", true);
+        _controller.enabled = false;
     }
 }
