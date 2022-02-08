@@ -64,6 +64,8 @@ public class Player : MonoBehaviour
     public void GrabLedge()
     {
         _anim.SetBool("GrabLedge", true);
+        _anim.SetFloat("Speed", 0.0f);
+        _anim.SetBool("Jump", false);
         _controller.enabled = false;
     }
 }
