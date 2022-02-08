@@ -13,6 +13,7 @@ public class LedgeGrabChecker : MonoBehaviour
         if (other.tag == "Ledge") 
         {
             player.GrabLedge();
+            player.transform.position = other.GetComponent<Ledge>().GetSnapPosition();
         }
     }
 }
