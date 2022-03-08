@@ -14,6 +14,7 @@ public class LedgeGrabChecker : MonoBehaviour
         {
             player.GrabLedge();
             player.transform.position = other.GetComponent<Ledge>().GetSnapPosition();
+            player.standPosition = other.GetComponent<Ledge>().GetStandPosition();
         }
     }
 }

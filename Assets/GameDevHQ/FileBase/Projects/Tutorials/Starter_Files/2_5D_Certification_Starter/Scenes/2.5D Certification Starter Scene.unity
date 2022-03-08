@@ -212,6 +212,7 @@ MonoBehaviour:
   _speed: 20
   _jumpHeight: 30
   _gravity: 1.5
+  standPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &258044975
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,6 +336,36 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -452265138304840235, guid: c8e2a85daf4254ce4ad19272df97564e, type: 3}
+--- !u!1 &385830265
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 385830266}
+  m_Layer: 0
+  m_Name: StandPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &385830266
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 385830265}
+  m_LocalRotation: {x: 0.7071067, y: -0, z: -0, w: 0.7071069}
+  m_LocalPosition: {x: -0.25897545, y: -0.4882345, z: -0.12241102}
+  m_LocalScale: {x: 0.3547609, y: 1.9704432, z: 0.36281693}
+  m_Children: []
+  m_Father: {fileID: 673148099}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &673148098
 GameObject:
   m_ObjectHideFlags: 0
@@ -368,6 +399,7 @@ Transform:
   m_LocalScale: {x: 2.8188, y: 1.1489, z: 0.5075}
   m_Children:
   - {fileID: 1304223015}
+  - {fileID: 385830266}
   m_Father: {fileID: 4000101874803705870}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -462,6 +494,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _snapPosition: {fileID: 1304223014}
+  _standPosition: {fileID: 385830265}
 --- !u!1 &1216695342
 GameObject:
   m_ObjectHideFlags: 0
@@ -795,8 +828,8 @@ Camera:
   m_GameObject: {fileID: 2120877326}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.7830189, g: 0.7830189, b: 0.7830189, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

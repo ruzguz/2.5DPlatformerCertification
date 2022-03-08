@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
     private Vector3 _direction;
     private Vector3 _velocity;
     private float _yVelocity;
+    private bool _onLedge = false;
+    public Vector3 standPosition;
 
     // Component Handlers
     private CharacterController _controller;
@@ -38,6 +40,19 @@ public class Player : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        CalculateMovement();
+
+        if (_onLedge == true) 
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                _anim.SetTrigger("ClimbUp");
+            }
+        }
+    }
+
+    public void CalculateMovement()
     {
         float h = Input.GetAxisRaw("Horizontal");
         _direction = new Vector3(0, 0, h);
@@ -67,5 +82,12 @@ public class Player : MonoBehaviour
         _anim.SetFloat("Speed", 0.0f);
         _anim.SetBool("Jump", false);
         _controller.enabled = false;
+        _onLedge = true;
+    }
+
+    public void GrabLedgeCompleted()
+    {
+        transform.position = standPosition;
+        _controller.enabled = true;
     }
 }
