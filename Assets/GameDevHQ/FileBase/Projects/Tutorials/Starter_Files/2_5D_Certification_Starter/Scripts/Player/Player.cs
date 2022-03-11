@@ -89,5 +89,6 @@ public class Player : MonoBehaviour
     {
         transform.position = standPosition;
         _controller.enabled = true;
+        _anim.SetBool("GrabLedge", false);
     }
 }
