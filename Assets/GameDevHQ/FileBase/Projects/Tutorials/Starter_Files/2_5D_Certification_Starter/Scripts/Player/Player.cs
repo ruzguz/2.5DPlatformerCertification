@@ -15,7 +15,10 @@ public class Player : MonoBehaviour
     private Vector3 _direction;
     private Vector3 _velocity;
     private float _yVelocity;
+    [SerializeField]
     private bool _onLedge = false;
+    [SerializeField]
+    private bool _onLadder = false;
     public Vector3 standPosition;
 
     // Component Handlers
@@ -41,6 +44,14 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+        // Check for climb ladder
+        if (_onLadder == true) 
+        {
+            CalculateLadderMovement();
+            return;
+        }
+
         CalculateMovement();
 
         if (_onLedge == true) 
@@ -57,6 +68,15 @@ public class Player : MonoBehaviour
         float h = Input.GetAxisRaw("Horizontal");
         _direction = new Vector3(0, 0, h);
         _velocity = _direction * _speed;
+
+        // Change Player Aimation
+        _anim.SetFloat("Speed", Mathf.Abs(h));
+
+        // Flip character
+        if (h != 0) 
+        {
+            transform.localScale = new Vector3(3,3,h*3);
+        }
 
         if (_controller.isGrounded == true) 
         {
@@ -90,5 +110,24 @@ public class Player : MonoBehaviour
         transform.position = standPosition;
         _controller.enabled = true;
         _anim.SetBool("GrabLedge", false);
+    }
+
+    // ------------ LADDER FUNCTIONS ---------
+    public void CalculateLadderMovement() 
+    {
+        float v = Input.GetAxisRaw("Vertical");
+        if (v != 0)  
+        {
+            _direction = new Vector3(0, v, 0);
+            _velocity = _direction * _speed;
+
+            _controller.Move(_velocity * Time.deltaTime);
+        }
+    }
+
+    public void ClimbLadder()
+    {
+        _onLadder = true;
+        _anim.SetFloat("Speed", 0.0f);
     }
 }
