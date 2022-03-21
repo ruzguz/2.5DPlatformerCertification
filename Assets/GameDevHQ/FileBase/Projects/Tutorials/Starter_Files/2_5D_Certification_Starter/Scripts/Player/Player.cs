@@ -80,7 +80,7 @@ public class Player : MonoBehaviour
 
         if (_controller.isGrounded == true) 
         {
-            _anim.SetBool("Jump", false);
+            SetGroundadValues();
             if (Input.GetKeyDown(KeyCode.Space)) 
             {
                 _anim.SetBool("Jump", true);
@@ -115,6 +115,7 @@ public class Player : MonoBehaviour
     // ------------ LADDER FUNCTIONS ---------
     public void CalculateLadderMovement() 
     {
+        _yVelocity = 0.0f;
         float v = Input.GetAxisRaw("Vertical");
         if (v != 0)  
         {
@@ -129,5 +130,20 @@ public class Player : MonoBehaviour
     {
         _onLadder = true;
         _anim.SetFloat("Speed", 0.0f);
+        _anim.SetBool("ClimbLadder", true);
+        _anim.SetBool("Falling", false);
+    }
+
+    public void LeaveLadder()
+    {
+        _onLadder = false;
+        _anim.SetBool("ClimbLadder", false);
+        _anim.SetBool("Falling", true);
+    }
+
+    public void SetGroundadValues() 
+    {
+        _anim.SetBool("Jump", false);
+        _anim.SetBool("Falling", false);
     }
 }

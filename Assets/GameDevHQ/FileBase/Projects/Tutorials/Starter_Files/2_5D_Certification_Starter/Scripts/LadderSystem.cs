@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class LadderSystem : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other) 
+    private void OnTriggerStay(Collider other) 
     {
         if (other.tag == "Player") 
         {
-            other.GetComponent<Player>().ClimbLadder();
-        }
+            if (Input.GetAxisRaw("Vertical") != 0) 
+            {
+                other.GetComponent<Player>().ClimbLadder();
+            } else if (Input.GetAxisRaw("Horizontal") != 0) 
+            {
+                other.GetComponent<Player>().LeaveLadder();
+            }
+        } 
     }
 }
