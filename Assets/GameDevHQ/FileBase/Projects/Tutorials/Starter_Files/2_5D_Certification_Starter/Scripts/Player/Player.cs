@@ -126,6 +126,19 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void PushByLadder(float force)
+    {
+        if (_onLadder == false)
+            return;
+
+        _yVelocity = 0.0f;
+        _direction = new Vector3(0, 0, force);
+        _velocity = _direction * _speed;
+        _controller.Move(_velocity * Time.deltaTime);
+
+        LeaveLadder();
+    }
+
     public void ClimbLadder()
     {
         _onLadder = true;

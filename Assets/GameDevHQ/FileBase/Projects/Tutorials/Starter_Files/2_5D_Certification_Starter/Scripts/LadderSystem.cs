@@ -11,10 +11,20 @@ public class LadderSystem : MonoBehaviour
             if (Input.GetAxisRaw("Vertical") != 0) 
             {
                 other.GetComponent<Player>().ClimbLadder();
-            } else if (Input.GetAxisRaw("Horizontal") != 0) 
+            }
+            
+            if (Input.GetAxisRaw("Horizontal") != 0) 
             {
                 other.GetComponent<Player>().LeaveLadder();
             }
         } 
+    }
+
+    private void OnTriggerExit(Collider other) 
+    {
+        if (other.tag == "Player") 
+        {
+            other.GetComponent<Player>().LeaveLadder();
+        }
     }
 }
