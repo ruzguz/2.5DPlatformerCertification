@@ -20,6 +20,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private bool _onLadder = false;
     public Vector3 standPosition;
+    [SerializeField]
+    private Transform _rollAnimationStandPosition;
 
     // Component Handlers
     private CharacterController _controller;
@@ -44,12 +46,21 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+        if (_controller.enabled == false)
+            return;
+                    
         // Check for climb ladder
         if (_onLadder == true) 
         {
             CalculateLadderMovement();
             return;
+        }
+
+        // Trigger Roll animation
+        if (Input.GetKeyDown(KeyCode.LeftShift)) 
+        {
+            Roll();
         }
 
         CalculateMovement();
@@ -110,6 +121,19 @@ public class Player : MonoBehaviour
         transform.position = standPosition;
         _controller.enabled = true;
         _anim.SetBool("GrabLedge", false);
+    }
+
+    // ------------ ROLL FUNCTIONS  ---------
+    public void Roll()
+    {
+        _anim.SetTrigger("Roll");
+        _controller.enabled = false;
+    }
+
+    public void RollCompleted()
+    {
+        transform.position = _rollAnimationStandPosition.position;
+        _controller.enabled = true;
     }
 
     // ------------ LADDER FUNCTIONS ---------
